@@ -7,3 +7,8 @@ __pycache__/
 
 # Camera viewer snapshots
 huenit_snapshot_*.jpg
+
+# Web app (web_app/)
+web_app/.session_secret
+node_modules/
+.next/

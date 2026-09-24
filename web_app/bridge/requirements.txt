@@ -1,0 +1,8 @@
+# Bridge between the HUENIT hardware and the web UI.
+# Install from the repo root with: python -m pip install -r web_app/bridge/requirements.txt
+
+-r ../../requirements.txt  # pyserial, opencv-python, numpy (shared with the scripts)
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27            # needed by fastapi.testclient
+pytest>=8.0
