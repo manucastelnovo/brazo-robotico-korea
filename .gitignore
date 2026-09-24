@@ -1,0 +1,9 @@
+# Python virtual environment (see SETUP.md)
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Camera viewer snapshots
+huenit_snapshot_*.jpg

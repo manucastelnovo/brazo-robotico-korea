@@ -1,0 +1,8 @@
+# HUENIT arm + AI camera scripts
+# Install with: python -m pip install -r requirements.txt
+
+pyserial>=3.5          # USB serial link to the arm and the camera (all scripts)
+opencv-python>=4.9,<5  # camera viewer: decode frames, face detection, window
+                       # (OpenCV 5 removed CascadeClassifier, used by --ai pc)
+numpy>=1.26            # camera viewer: image buffers
+pygame>=2.5            # gamepad scripts (Logitech F310)
