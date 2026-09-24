@@ -6,7 +6,7 @@ Python scripts for the **HUENIT robotic arm** and the **HUENIT AI Camera** on Wi
 - 🎮 Control the arm with a gamepad, and record and replay movements.
 - 📷 Watch the AI Camera live on the PC, with face detection and face recognition.
 
-No HUENIT LAB install needed: just Python and `pip`.
+No HUENIT LAB install needed: just Python and `pip` (HUENIT LAB is only used for firmware updates).
 
 ## Setup
 
@@ -58,22 +58,12 @@ Full guide (hardware, USB driver, pen calibration, face training, troubleshootin
 | `huenit_teach_replay.py` | Keyboard teach & replay using the arm's encoders | arm |
 | `huenit_gripper_test.py` | Test the gripper module states | arm, gripper |
 | `test_gamepad.py` | Check that the gamepad is detected | gamepad |
-
-### Legacy scripts (need HUENIT LAB)
-
-These import HUENIT's own library from the HUENIT LAB install folder, so `requirements.txt` is not enough:
-
-| Script | What it does |
-|---|---|
-| `calibrar_z.py`, `calibrar_z_fino.py` | Find the pen height (Z) by lowering the pen step by step |
-| `cuadrado.py`, `circulo_cuadrado.py` | Draw a square / a circle with a square inscribed in it |
-| `mover_huenit.py`, `secuencia_huenit.py` | Simple movement tests |
-
-Run them with the Python bundled with [HUENIT LAB](https://huenit.gitbook.io/huenit-manual-en):
-
-```powershell
-& "C:\Program Files\Huenit robotics\resources\huenit_py\huenit_env_win\python.exe" .\calibrar_z_fino.py
-```
+| `calibrar_z.py` | Find the pen height (Z): lowers the pen 1 mm per ENTER | arm, pen |
+| `calibrar_z_fino.py` | Fine pen height: 0.2 mm steps, `u` to go up | arm, pen |
+| `cuadrado.py` | Draws a 30 x 30 mm square | arm, pen |
+| `circulo_cuadrado.py` | Draws a circle with a square inscribed in it | arm, pen |
+| `mover_huenit.py`, `secuencia_huenit.py` | Simple movement tests | arm |
+| `huenit_arm.py` | Small library (`checkConnection`, `moveG0`) used by the scripts above | - |
 
 ## Documentation
 

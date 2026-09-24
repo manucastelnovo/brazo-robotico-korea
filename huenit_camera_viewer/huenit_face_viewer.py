@@ -27,11 +27,11 @@ How it works:
   4. On exit the PC sends 'q', the camera answers "@BYE", both go back to
      115200 baud and the camera is reset back to HUENIT OS.
 
-Usage (with the Python bundled with HUENIT):
-    & "C:\\Program Files\\Huenit robotics\\resources\\huenit_py\\huenit_env_win\\python.exe" .\\huenit_face_viewer.py
-    ... .\\huenit_face_viewer.py --ai camera
-    ... .\\huenit_face_viewer.py --ai 1 --names "1=Manu,2=Marcos"
-    ... .\\huenit_face_viewer.py --port COM6 --no-detect
+Usage (after `pip install -r requirements.txt`, see SETUP.md):
+    python huenit_face_viewer.py
+    python huenit_face_viewer.py --ai camera
+    python huenit_face_viewer.py --ai 1 --names "1=Manu,2=Marcos"
+    python huenit_face_viewer.py --port COM6 --no-detect
 
 Keys in the video window:
     Q / ESC   quit
@@ -51,7 +51,7 @@ try:
     import serial
     from serial.tools import list_ports
 except ImportError as e:
-    print(f"Missing dependency: {e}. Run this with the HUENIT bundled Python.")
+    print(f"Missing dependency: {e}. Install them with: python -m pip install -r requirements.txt")
     sys.exit(1)
 
 REPL_BAUD = 115200

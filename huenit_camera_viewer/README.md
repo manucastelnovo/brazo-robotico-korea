@@ -4,16 +4,17 @@ Shows the HUENIT AI Camera video on the PC and draws a box around detected faces
 
 ## Run
 
-Connect the AI Camera to the PC with USB-C, then from this folder:
+Install the dependencies first (see [SETUP.md](../SETUP.md)). Connect the AI Camera to the PC with USB-C,
+then from the repository folder:
 
 ```powershell
-& "C:\Program Files\Huenit robotics\resources\huenit_py\huenit_env_win\python.exe" .\huenit_face_viewer.py
+& $PY .\huenit_camera_viewer\huenit_face_viewer.py
 ```
 
 The camera port is auto-detected (the arm on another port is ignored). To force it:
 
 ```powershell
-... .\huenit_face_viewer.py --port COM6
+& $PY .\huenit_camera_viewer\huenit_face_viewer.py --port COM6
 ```
 
 ## Where faces are detected (`--ai`)

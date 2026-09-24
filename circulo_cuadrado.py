@@ -2,10 +2,7 @@ import sys
 import time
 import math
 
-HUENIT_SRC = r"C:\Program Files\Huenit robotics\resources\huenit_py\src"
-sys.path.insert(0, HUENIT_SRC)
-
-from python_protocol_cores.robot_blocks.robot import checkConnection, moveG0
+from huenit_arm import checkConnection, moveG0
 
 
 # ==========================================

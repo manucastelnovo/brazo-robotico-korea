@@ -3,8 +3,8 @@
 Get these Python scripts running on a Windows PC with a HUENIT robotic arm and the HUENIT AI Camera:
 write text with a pen, control the arm with a gamepad, and watch the camera (with face recognition) on the PC.
 
-> You only need Python and `pip`. HUENIT LAB is **not** required, except for firmware updates and a few
-> legacy scripts (see [What needs HUENIT LAB](#what-needs-huenit-lab)).
+> You only need Python and `pip`. HUENIT LAB is **not** required, except for firmware updates
+> (see [What needs HUENIT LAB](#what-needs-huenit-lab)).
 
 ## Quick path
 
@@ -62,16 +62,11 @@ the first time you plug them in. If no COM port appears, install the
 ### What needs HUENIT LAB
 
 [HUENIT LAB](https://huenit.gitbook.io/huenit-manual-en/huenit-user-manual/how-to-use-huenit-lab/0.-getting-ready/installing-huenit-lab)
-is only needed for:
+is only needed for **firmware updates** (recommended once): **[...] > Update Firmware**, one device at a time.
+These scripts were tested with camera firmware MicroPython v2.0.67.
 
-- **Firmware updates** (recommended once): **[...] > Update Firmware**, one device at a time.
-  These scripts were tested with camera firmware MicroPython v2.0.67.
-- **Legacy scripts** that import HUENIT's own library from its install folder:
-  `calibrar_z.py`, `calibrar_z_fino.py`, `cuadrado.py`, `circulo_cuadrado.py`, `mover_huenit.py`, `secuencia_huenit.py`.
-  Run them with HUENIT's bundled Python:
-  ```powershell
-  & "C:\Program Files\Huenit robotics\resources\huenit_py\huenit_env_win\python.exe" .\calibrar_z_fino.py
-  ```
+None of the scripts import HUENIT's own library: the simple ones (`calibrar_z*.py`, `cuadrado.py`, ...) use
+[`huenit_arm.py`](huenit_arm.py), a small replacement that speaks plain G-code over `pyserial`.
 
 ## 3. Connect the hardware
 
@@ -140,10 +135,15 @@ The pen must press slightly on the paper (the holder has a spring). The writer u
 
 If your table, paper or pen differ, find your value and put it in `Z_DIBUJO` (and ~10 mm higher in `Z_ARRIBA`):
 
-- **With HUENIT LAB:** run `calibrar_z_fino.py` with HUENIT's Python (see [What needs HUENIT LAB](#what-needs-huenit-lab)).
-  Press **ENTER** to lower 0.2 mm, `u` + ENTER to raise, `q` + ENTER to finish, and note `Z FINAL`.
-- **Without it:** use `--dry-run` values as a guide and adjust `Z_DIBUJO` in small steps (0.5 mm) until the
-  pen touches the paper and the spring compresses a little.
+1. Set the starting height near your surface: edit `Z = -60.0` at the top of `calibrar_z_fino.py`.
+2. Run it:
+   ```powershell
+   & $PY .\calibrar_z_fino.py
+   ```
+3. Press **ENTER** to lower 0.2 mm, `u` + ENTER to raise, `q` + ENTER to finish.
+4. Stop when the pen touches the paper and the spring compresses a little, and note `Z FINAL`.
+
+For a coarse first pass (1 mm steps, starting at Z -45) use `calibrar_z.py` the same way.
 
 ### Watch the AI Camera on the PC
 
